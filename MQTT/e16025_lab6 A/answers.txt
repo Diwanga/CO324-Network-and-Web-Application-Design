@@ -1,0 +1,30 @@
+E/16/025
+LAB 06
+PART A
+
+1.
+As Server is not present in this system, we have to store Tasks in every subscribed user.All users have to publish when new task or update happen in Tasks. So then they can update there Tasks and sync with them together.
+
+2.
+Users assign ids for task manually with maintaining local task list and increasing id by whenever got subscribe data about add task. To avoide colision, we can use Client id with local task id combination for Task ID.
+
+3.
+ADD DELETE oparating can be done over using related topics. when client i joining halfway ,can get all task by using LIST operation
+
+4.
+a.  Qos level 1
+
+ As this level , we have reliability, and bandwidth efficient. Qos level 2 has 4way handshaking and it may consump bandwidth as well as time. As well as Qos 0 level is less reliable as lack of acknoledgement. So Qos level 2 is perfect for Task API.
+
+b.  Use clean session flag = false
+
+With this flag, client subscription data will not clear when client disconnect from brocker. so after client connect to broker again, this can help to client not select as new customer.
+
+c.  Use  retain flag - true
+
+When retain flag true, on a publication topic , broker can store publications data even after send all subcripted users So new client subscribe the topic, he can get topics data by easily as brocker queuing topic data.
+
+5. Both can use as we have Wildcard feature.
+ but with STATE/ID/OPERATION we can specifically selct operation with the topic.
+
+6.description not need include in topic. it may cause make topic more lengthy.It may waste bandwidth.Insted we can using payload of  to send decription.

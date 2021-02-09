@@ -1,0 +1,18 @@
+E/16/025 Amasith K.T.D
+CO324 - Network & Web Application design
+Lab5 
+=============================================
+
+
+1.  
+    a ,b .  Implemented in EX1/task_server.py
+  
+
+2.  
+    c.  see taskstate-fsm.pdf
+    d.  Implemented in EX2/task_server.py
+
+    e.  Yes.
+ Illegal transition due to a race condition can be happen when updating. lets get two clients access same task which is in open state.Then client1 is transfering the state of the task to assingned while client2 is transfering it into cancelled client 2 access the task before client 1 transfering due to race condition, there will be an illegal transaction will happen.
+        
+3.  Implemented in EX2/task_server.py

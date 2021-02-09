@@ -1,0 +1,22 @@
+E/16/025
+Amasith KTD
+12/4/2020
+====================
+I implemented one client program which can publish and subscribe to Task API.
+As mentioned in Part A, I created my solution.
+
+You can create may instance at once with 
+                                 
+                                      python client.py
+
+and interact withTASK API.  
+
+****  my Task ID is created with {clientname}_{count}. So it is unique for Task. 
+      So when Starting program You Are asked to give client name. & remember it. 
+For delete and update operation needs that. 
+I recomend use C1,C2.. so then your task id will be C1_1,C1_2... so on.
+AND ALSO I HAVE CREATED  LIST oparation, you can easily see what are in list.
+
+This programm is fully functional with command line user inputs. 
+locally, tasks ara stored in dictionary.
+

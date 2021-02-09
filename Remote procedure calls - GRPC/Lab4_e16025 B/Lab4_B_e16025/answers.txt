@@ -1,0 +1,39 @@
+E/16/025
+Amasith KTD
+
+
+
+1)
+  idempotence is known as , keeping unchanged. I this API scenario, Idempotence is effect on the server of multiple identical requests with that method is the same as the
+ effect for a single such request.It mean , server is not change due to idempotent requests.
+
+ When we getting our Task API , Addtask operation : this is not idempotent. in this operation if we call addtask several times with very same description each time server will assign different id for each task 
+so it cannot be same result inside server side.
+	
+  listtask operation , this is idempotent. As We can make many request with same ids , but there is no change  data in server.  
+deltask operation , this is idempotent operation, as we request same id for deltask request, if it is available on server, it may delete, other wise not anything delete.
+So making same deltask requests doesn’t make server changing of its states.
+Editetask operation , this is idempotent , as when we making same request(same arguments) with editetask rpc, it does not make changes in server states. Every time same description is setting. So it  behave idempotence way.
+
+3)
+  By purposely or not , client can enter much more lengthy string for the description. This may lead to server freeze and it may other clients have to wait.
+We have to check ids as out data is mainly depend on ids and , it can save time by do not reading unnecessary string(descriptions) .
+Except that, clients can impose denial of attack by  inputs. So we have to check.
+
+6)
+One of the edit can be lost,(Lost update problem). Solution is we have to come across some Serialization for our server. And with distributed system these problems can be avoided.
+
+7)
+ data races occur when two or more threads share variables so that changes done by one thread could be lost when another thread uses not updated values of that shared variable ,
+to overcome this issue we can introduce mutex or mutual exclusive locks, which is we add particular operation to give permit only one thread can have access server functions at one time.
+So by this, data races can be avoided.
+
+
+8)
+In the given code when two threads call addtask same time it creates two separate locks and executes, that’s not what we want to happen we wan one thread to wait until other 
+thread done with the requested resources . so that we have to have one lock object and it should tack the thread Accessing a task at the same time and waits until one finish with addtask.
+ So make lock object as instance of class.
+
+10) 
+ It may depend on a implementation. As listtask is idempotent, we can say it does not want critical section, but we can implement like, 
+wait until in going addtask and send the list, like that. So need of critical section is deend on implementation.
